@@ -1,7 +1,13 @@
 import React from 'react';
+import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+  } from "react-router-dom";
 
 class App extends React.Component {
 
@@ -80,17 +86,26 @@ class App extends React.Component {
         );
 
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <SearchBar searchMovieProp={this.searchMovie}></SearchBar>
-                    </div>
-                </div>
+            <BrowserRouter>
+                <div className="container">
+                    <Routes>
+                        <Route path="/" element={
+                            <React.Fragment>
+                                <div className="row">
+                                    <div className="col-lg-12">
+                                        <SearchBar searchMovieProp={this.searchMovie}></SearchBar>
+                                    </div>
+                                </div>
+                                <MovieList 
+                                movies={filteredMovies}
+                                deleteMovieProp={this.deleteMovie}/>
+                            </React.Fragment>
+                        }/>
 
-                <MovieList 
-                movies={filteredMovies}
-                deleteMovieProp={this.deleteMovie}/>
-            </div>
+                        <Route path="/add" element={<AddMovie/>} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
         )
 
     }
