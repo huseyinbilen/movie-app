@@ -1,17 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 
+import App from './components/App';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => {
-
-  return (
-    <div>
-      <h1>Movie App Created</h1>
-    </div>
-  );
-}
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
